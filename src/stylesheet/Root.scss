@@ -63,83 +63,87 @@ body {
 
 }
 
-/* Responsive for desktop */
-@media screen and (min-width: v.$md-breakpoint) {
-  main {
-  .group {
-    display:flex;
-    align-items:center;
-    section.currentWeatherForecast, section.currentWeatherImage {
-      flex-basis:25%;
-    }
-    section.meme {
-      flex-basis:50%;
-    }
-  }
-}
+.memeaster{
+    background-image: url('../assets/Weather Icons/frog.png') !important;
+    background-repeat: no-repeat !important;
 }
 
-/* Settings icon */
-.settings-icon {
-  font-size:1.5rem;
-  /* padding-top:10px;
-  padding-left:10px; */
-}
-
-
-//récup des class ant design pour pouvoir mettre en fond du toggle une image 🔇🔊
-.muted-switch .ant-switch-handle::before {
-  background-color: white; 
-  background-image: url('../assets/icons/sound-mute.svg');
-}
-
-.unmuted-switch .ant-switch-handle::before {
-  background-color: white; 
-  background-image: url('../assets/icons/sound-display.svg');
-}
-
-//récup des class ant design pour pouvoir mettre en fond du toggle une image 
-.lightmode-switch .ant-switch-handle::before {
-  background-color: white; 
-  background-image: url('../assets/icons/light-mode.svg');
-  background-repeat: no-repeat;
-}
-
-.darkmode-switch .ant-switch-handle::before {
-  background-color: white; 
-  background-image: url('../assets/icons/dark-mode.svg');
-  background-repeat: no-repeat;
-}
-
-/* Header */
-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
-  flex-wrap:wrap;
-  @media screen and (min-width: v.$md-breakpoint) {
-    flex-wrap:nowrap;
-  }
-
-  .settings {
-    flex-basis: 33%;
-    display: flex;
-    justify-content: flex-end;
-    @media screen and (min-width: v.$sm-breakpoint) {
-      margin-right:1rem;
-    }
+    /* Responsive for desktop */
     @media screen and (min-width: v.$md-breakpoint) {
-      order:1;
-      display: flex;
+        main {
+            .group {
+                display: flex;
+                align-items: center;
+
+                section.currentWeatherForecast, section.currentWeatherImage {
+                    flex-basis: 25%;
+                }
+
+                section.meme {
+                    flex-basis: 50%;
+                }
+            }
+        }
     }
-  }
+    /* Settings icon */
+    .settings-icon {
+        font-size: 1.5rem;
+        /* padding-top:10px;
+  padding-left:10px; */
+    }
+    //récup des class ant design pour pouvoir mettre en fond du toggle une image 🔇🔊
+    .muted-switch .ant-switch-handle::before {
+        background-color: white;
+        background-image: url('../assets/icons/sound-mute.svg');
+    }
 
-}
+    .unmuted-switch .ant-switch-handle::before {
+        background-color: white;
+        background-image: url('../assets/icons/sound-display.svg');
+    }
+    //récup des class ant design pour pouvoir mettre en fond du toggle une image
+    .lightmode-switch .ant-switch-handle::before {
+        background-color: white;
+        background-image: url('../assets/icons/light-mode.svg');
+        background-repeat: no-repeat;
+    }
 
-.hidden {
-  display:none;
-}
+    .darkmode-switch .ant-switch-handle::before {
+        background-color: white;
+        background-image: url('../assets/icons/dark-mode.svg');
+        background-repeat: no-repeat;
+    }
+    /* Header */
+    header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+
+        @media screen and (min-width: v.$md-breakpoint) {
+            flex-wrap: nowrap;
+        }
+
+        .settings {
+            flex-basis: 33%;
+            display: flex;
+            justify-content: flex-end;
+
+            @media screen and (min-width: v.$sm-breakpoint) {
+                margin-right: 1rem;
+            }
+
+            @media screen and (min-width: v.$md-breakpoint) {
+                order: 1;
+                display: flex;
+            }
+        }
+    }
+
+    .hidden {
+        display: none;
+    }
 
 
 
