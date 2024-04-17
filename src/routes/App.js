@@ -26,7 +26,7 @@ import "../stylesheet/Root.scss";
 
 const App = () => {
 
-  const apiWeather = process.env.REACT_APP_WEATHER_API_KEY;
+    const apiWeather = process.env.REACT_APP_WEATHER_API_KEY;
 
 
 
@@ -55,8 +55,10 @@ const App = () => {
   };
   const onClose = () => {
     setOpen(false);
-  };
+    };
+  const [isEaster, setIsEaster] = useState(false);
 
+  const audio: Partial<HTMLAudioElement> = document.getElementById('audio')
   //Etat des Infos Modal
   const [selectedDayInfo, setSelectedDayInfo] = useState(null);
 
@@ -257,7 +259,26 @@ const filteredHours = weatherData.forecast && weatherData.forecast.forecastday &
       </div>
     ))}
   </React.Fragment>
-));
+    ));
+
+    const easterClick = event => {
+        switch (event.detail) {
+            case 2: {
+                setIsEaster(false);
+                audio.pause();
+                break;
+            }
+            case 3: {
+                console.log('hotline bling');
+                audio.play();
+                setIsEaster(true);
+                break;
+            }
+            default: {
+                break;
+            }
+        }
+    };
 
   //affichage des alertes si l'api en renvoit
   const alertsList =
@@ -278,8 +299,8 @@ const filteredHours = weatherData.forecast && weatherData.forecast.forecastday &
           <Logo isDarkMode={isDarkMode}></Logo>
 
           {/* Affichage des params */}
-          <div className="settings"><FiSettings className="settings-icon" onClick={() => showDrawer("right")} /></div>
-            <Drawer title="Paramètres" placement={placement} onClose={onClose} open={open}>
+                <div className="settings"><FiSettings className="settings-icon" onClick={() => showDrawer("right")} /></div>
+                <Drawer className={isEaster ? "memeaster":"" } title="Paramètres" placement={placement} onClose={onClose} open={open} onClick={easterClick}>
               <div className="icon-display">
                 <Switch checked={isDarkMode} onClick={toggleDarkMode} className={isDarkMode ? "darkmode-switch" : "lightmode-switch"} />
               </div>
@@ -312,8 +333,7 @@ const filteredHours = weatherData.forecast && weatherData.forecast.forecastday &
               {/* Composant Weather Meme qui gère l'affichage du meme et le lancement du son selon les conditions météo*/}
               <WeatherMeme currentWeatherText={currentWeatherText} memes={memes} musiques={musiques} isMuted={isMuted}/>
             </section>
-          </div>
-
+                </div>
             <div>
               <section className="carousel">
                 <div className="carousel-container">
@@ -350,7 +370,11 @@ const filteredHours = weatherData.forecast && weatherData.forecast.forecastday &
                   {selectedDayInfo && <Modal onClose={handleCloseModal} dayInfo={selectedDayInfo} />}
                 </>
               </section>
-            </div>
+                </div>
+                <audio id="audio" >
+                    <source src="./HotlineBling.ogg" type="audio/ogg" />
+                    your browser does not support
+                </audio>
           </main>
       </div>
     );
